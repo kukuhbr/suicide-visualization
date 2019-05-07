@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
-import Tabs from './Tabs';
+import Tabs from './components/Tabs';
+import ChoroplethMap from './components/ChoroplethMap';
 
 import './styles.css';
 import './App.css';
@@ -17,8 +18,8 @@ function App() {
           <div label="Croc">
             After 'while, <em>Crocodile</em>!
           </div>
-          <div label="Sarcosuchus">
-            Nothing to see here, this tab is <em>extinct</em>!
+          <div label="Choropleth">
+            <ChoroplethMap />
           </div>
         </Tabs>
       </div>
