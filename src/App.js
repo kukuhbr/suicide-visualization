@@ -1,47 +1,54 @@
-import React from 'react';
+import React, { Component } from 'react';
 import logo from './logo.svg';
-import Tabs from './components/Tabs';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 import ChoroplethMap from './components/ChoroplethMap';
+import Header from './components/Layouts/Header';
+import Typography from '@material-ui/core/Typography';
+import PropTypes from 'prop-types';
 
 import './styles.css';
 import './App.css';
 
-function App() {
-  return (
-    <div>
-      <div>
-        <h1>Suicide Rate around the World (2016)</h1>
-        <Tabs>
-          <div label="Gator">
-            See ya later, <em>Alligator</em>!
-          </div>
-          <div label="Croc">
-            After 'while, <em>Crocodile</em>!
-          </div>
-          <div label="Choropleth">
-            <ChoroplethMap />
-          </div>
-        </Tabs>
-      </div>
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
 
-          <p>
-            Hello Kukuh Basuki Rahmat!
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    </div>
+function TabContainer(props) {
+  return (
+    <Typography component="div" style={{ padding: 8 * 3 }}>
+      {props.children}
+    </Typography>
   );
 }
 
-export default App;
+export default class extends Component{
+  static propTypes = {
+    classes: PropTypes.object.isRequired,
+  };
+
+  state = {
+    value: 0,
+  };
+
+  handleChange = (event, value) => {
+    this.setState({ value });
+  };
+
+  render() {
+    const { value } = this.state;
+    return (
+      <div>
+        <Header />
+          <Tabs value={value} onChange={this.handleChange}>
+            <Tab label="By Country" />
+            <Tab label="Item Two" />
+            <Tab label="Item Three" />
+          </Tabs>
+          {value === 0 && <TabContainer><ChoroplethMap /></TabContainer>}
+          {value === 1 && <TabContainer>Item Two</TabContainer>}
+          {value === 2 && <TabContainer>Item Three</TabContainer>}
+          
+          
+          
+      </div>
+    );
+  }
+}
