@@ -8,6 +8,27 @@ class ChoroplethMap extends Component {
   componentDidMount() {
     let dataset = {};
     var countries = Datamap.prototype.worldTopo.objects.world.geometries;
+
+    let onlyValues = this.props.data.map(function (obj) { return obj[1]; });
+    onlyValues = onlyValues.filter(function(x) {
+      return x < 15;
+    });
+    let minValue = Math.min.apply(null, onlyValues),
+        maxValue = Math.max.apply(null, onlyValues);
+
+    let paletteScale = d3.scale.linear()
+    .domain([minValue, maxValue])
+    .range(["#FFEFEF", "#8a2323"]);
+
+    this.props.data.forEach(function (item) { //
+      // item example value ["AFG", 252777778]
+      let iso = item[0],
+          value = item[1];
+      if(value >= 15)
+        dataset[iso] = { numberOfThings: value, fillColor: "#8a0101" };
+      else
+        dataset[iso] = { numberOfThings: value, fillColor: paletteScale(value) };
+  });
     for (var i = 0, j = countries.length; i < j; i++) {
       console.log(countries[i].id, countries[i].properties.name);
     }
@@ -20,9 +41,7 @@ class ChoroplethMap extends Component {
           UNKNOWN: 'rgb(0,0,0)',
           defaultFill: '#eee'
       },
-      data: {
-        "USA": { "fillColor": "#42a844"}
-      },
+      data: dataset,
       setProjection: function (element) {
         var projection = d3.geo.mercator()
           .scale(100)
