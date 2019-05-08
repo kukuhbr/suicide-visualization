@@ -15,7 +15,7 @@ class Header extends React.Component {
         return(
             <AppBar position="static" color="secondary">
                 <Toolbar>
-                <Typography variant="h5" color="inherit">
+                <Typography variant="h5" color="inherit" style={{fontFamily: 'Comic Sans MS'}}>
                     Suicide Rate Around the World (2016)
                 </Typography>
                 </Toolbar>

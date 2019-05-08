@@ -12,6 +12,27 @@ class ChoroplethMap extends Component {
   componentDidMount() {
     let dataset = {};
     var countries = Datamap.prototype.worldTopo.objects.world.geometries;
+
+    let onlyValues = this.props.data.map(function (obj) { return obj[1]; });
+    onlyValues = onlyValues.filter(function(x) {
+      return x < 15;
+    });
+    let minValue = Math.min.apply(null, onlyValues),
+        maxValue = Math.max.apply(null, onlyValues);
+
+    let paletteScale = d3.scale.linear()
+    .domain([minValue, maxValue])
+    .range(["#FFEFEF", "#8a2323"]);
+
+    this.props.data.forEach(function (item) { //
+      // item example value ["AFG", 252777778]
+      let iso = item[0],
+          value = item[1];
+      if(value >= 15)
+        dataset[iso] = { suicide: value, fillColor: "#8a0101" };
+      else
+        dataset[iso] = { suicide: value, fillColor: paletteScale(value) };
+  });
     for (var i = 0, j = countries.length; i < j; i++) {
       console.log(countries[i].id, countries[i].properties.name);
     }
@@ -24,18 +45,15 @@ class ChoroplethMap extends Component {
           UNKNOWN: 'rgb(0,0,0)',
           defaultFill: '#eee'
       },
-      data: {
-        "USA": { "fillColor": "rgba(255,48,25,1)", "suicide": 1200000 }
-      },
+      data: dataset,
       geographyConfig: {
         borderColor: '#FFFFFF',
         highlightBorderWidth: 3,
-        highlightBorderColor: 'rgba(207,4,4,1)',
+        highlightBorderColor: '#02081a',
         highlightFillColor: function(geo) {
           return geo['fillColor'] || '#F5F5F5';
         },
         popupTemplate: function(geo, data) {
-          //if (!data) { return ; }
           let html = [
             '<fieldset class="hover-container">',
             '<legend>', geo.properties.name, '</legend>',
@@ -43,8 +61,10 @@ class ChoroplethMap extends Component {
 
           if (data) {
             html += [
-              '<div>', data.suicide.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","), ' suicides in 2016', '</div>',
-              '<div>', Math.round(data.suicide/365).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","), ' suicide(s) each day', '</div>',
+              '<span class="numbers">', data.suicide, '</span>',
+              '<span>', ' suicide cases', '</span>',
+              '<div>', 'in 100,000 population', '</div>',
+              //'<div>', Math.round(data.suicide/365).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","), ' suicide(s) each day', '</div>',
             ].join('');
           } else {
             html += [
@@ -56,10 +76,11 @@ class ChoroplethMap extends Component {
           return html;
         }
       },
+
       setProjection: function (element) {
         var projection = d3.geo.mercator()
-          .scale(150)
-          .translate([element.offsetWidth / 2, element.offsetHeight*1.3 / 2]);
+          .scale(130)
+          .translate([element.offsetWidth / 2, element.offsetHeight*1.4 / 2]);
 
         var path = d3.geo.path().projection(projection);
         return { path: path, projection: projection };
@@ -77,11 +98,11 @@ class ChoroplethMap extends Component {
   render() {
     return (
       <div id="container" style={{
-        height: "70vh",
-        width: "80vw",
+        height: "75vh",
+        width: "70vw",
         display: "block",
-        margin: "auto",
-        background: 'linear-gradient(#02081a, #86838c)'
+        background: 'linear-gradient(#02081a, #86838c)',
+        borderRadius: '15px',
       }}>
       </div>
     );
