@@ -141,7 +141,7 @@ class StackedBarChart extends Component {
 
     var svg = d3.select("#containerb").append("svg")
       .attr("id", "barchart")
-      .attr("width", width + margin.left + margin.right)
+      .attr("width", 650)
       .attr("height", height + margin.top + margin.bottom)
       .append("g")
       .attr("transform", "translate(" + 75 + "," + margin.top + ")");
