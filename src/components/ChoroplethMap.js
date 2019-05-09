@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Datamap from 'datamaps/dist/datamaps.world.min.js';
 import * as d3 from 'd3';
+import Grid from '@material-ui/core/Grid';
 //import {event as d3Event} from 'd3-selection';
 //import {zoom as d3Zoom} from 'd3-zoom';
 
@@ -15,7 +16,7 @@ class ChoroplethMap extends Component {
 
     let onlyValues = this.props.data.map(function (obj) { return obj[1]; });
     onlyValues = onlyValues.filter(function(x) {
-      return x < 15;
+      return x < 30;
     });
     let minValue = Math.min.apply(null, onlyValues),
         maxValue = Math.max.apply(null, onlyValues);
@@ -28,7 +29,7 @@ class ChoroplethMap extends Component {
       // item example value ["AFG", 252777778]
       let iso = item[0],
           value = item[1];
-      if(value >= 15)
+      if(value >= 30)
         dataset[iso] = { suicide: value, fillColor: "#8a0101" };
       else
         dataset[iso] = { suicide: value, fillColor: paletteScale(value) };
@@ -47,9 +48,9 @@ class ChoroplethMap extends Component {
       },
       data: dataset,
       geographyConfig: {
-        borderColor: '#FFFFFF',
+        borderColor: '#02081a',
         highlightBorderWidth: 3,
-        highlightBorderColor: '#02081a',
+        highlightBorderColor: '#fff',
         highlightFillColor: function(geo) {
           return geo['fillColor'] || '#F5F5F5';
         },
@@ -97,14 +98,30 @@ class ChoroplethMap extends Component {
 
   render() {
     return (
-      <div id="container" style={{
-        height: "75vh",
-        width: "70vw",
-        display: "block",
-        background: 'linear-gradient(#02081a, #86838c)',
-        borderRadius: '15px',
-      }}>
-      </div>
+      <div>
+        <Grid container spacing={16}>
+          <Grid item xs={9}>
+            <div id="container" style={{
+              height: "75vh",
+              width: "70vw",
+              display: "block",
+              background: 'linear-gradient(#02081a, #86838c)',
+              borderRadius: '15px',
+            }}>
+            </div>
+          </Grid>
+      
+          <Grid item xs={3}>
+            <div>
+              <p>Global Suicide Rates</p>
+              <p>10.7 per 100,000 population </p>
+              <p>786047 death by suicide in 2016</p>
+              <p>Global Suicide Percetage </p>
+            </div>
+          </Grid>
+      </Grid>
+        
+    </div>
     );
   }
 }
