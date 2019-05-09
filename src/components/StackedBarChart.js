@@ -6,6 +6,20 @@ class StackedBarChart extends Component {
     super(props)
     //this.createBarChart = this.createBarChart.bind(this)
   }
+
+  componentDidUpdate(prevProps) {
+    console.log(prevProps);
+    if(prevProps != null){
+      if(prevProps.selected !== this.props.selected ) {
+        console.log("Bangcat");
+        document.getElementById("barchart").remove();
+        this.drawChart();
+      }
+    }
+  }
+
+
+
   componentDidMount() {
     this.drawChart()
   }
@@ -73,23 +87,23 @@ class StackedBarChart extends Component {
     if(this.props.selected == 'High Income Country') {
       used = datahigh;
       arr = ["high"];
-      colors = ["#58CCED"];
+      colors = ["#225c34"];
     } else if (this.props.selected == 'Upper Middle Income Country') {
       used = datamidhigh;
       arr = ["midhigh"];
-      colors = ["#3895D3"];
+      colors = ["#058e3b"];
     } else if (this.props.selected == 'Lower Middle Income Country') {
       used = datalowmid;
       arr = ["lowmid"];
-      colors = ["#1261A0"];
+      colors = ["#1ab360"];
     } else if (this.props.selected == 'Low Income Country') {
       used = datalow;
       arr = ["low"];
-      colors = ["#072F5F"];
+      colors = ["#8fcea3"];
     } else {
       used = data;
       arr = ["low", "lowmid", "midhigh", "high"];
-      colors = ["#072F5F", "#1261A0", "#3895D3", "#58CCED"];
+      colors = ["#8fcea3", "#1ab360", "#058e3b", "#225c34"];
     }
 
     var dataset = d3.layout.stack()(arr.map(function(group) {
@@ -125,11 +139,13 @@ class StackedBarChart extends Component {
       .scale(x)
       .orient("bottom");
 
-    var svg = d3.select("#container").append("svg")
+    var svg = d3.select("#containerb").append("svg")
+      .attr("id", "barchart")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
       .append("g")
-      .attr("transform", "translate(" + margin.left/2 + "," + margin.top + ")");
+      .attr("transform", "translate(" + 75 + "," + margin.top + ")");
+
 
     svg.append("g")
       .attr("class", "y axis")
@@ -145,6 +161,32 @@ class StackedBarChart extends Component {
       .attr("y", height + margin.bottom - 5)
       .style("text-anchor", "middle")
       .text("Age Group");
+
+    svg.append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("x", 0- (height/2))
+      .attr("y", -50)
+      .attr("dy", "1em")
+      .style("text-anchor", "middle")
+      .text("Estimated Death (in thousand)");
+
+    if(this.props.selected !== 'all'){
+      svg.append("text")
+      .attr("x", (width / 2))
+      .attr("y", 0 - (margin.top / 2))
+      .attr("text-anchor", "middle")
+      .style("font-size", "18px")
+      .style("text-decoration", "underline")
+      .text(this.props.selected + " Suicide Rate");
+    } else {
+      svg.append("text")
+      .attr("x", (width / 2))
+      .attr("y", 0 - (margin.top / 2))
+      .attr("text-anchor", "middle")
+      .style("font-size", "18px")
+      .style("text-decoration", "underline")
+      .text("All Income Country Suicide Rate");
+    }
 
     /*
     svg.append("text")      // text label for the x axis
@@ -274,13 +316,13 @@ class StackedBarChart extends Component {
       .style("display", "none");
 
     tooltip.append("rect")
-      .attr("width", 30)
+      .attr("width", 50)
       .attr("height", 20)
-      .attr("fill", "white")
-      .style("opacity", 0.5);
+      .attr("fill", "#EFFFEF")
+      .style("opacity", 0.8);
 
     tooltip.append("text")
-      .attr("x", 15)
+      .attr("x", 25)
       .attr("dy", "1.2em")
       .style("text-anchor", "middle")
       .attr("font-size", "12px")
@@ -291,12 +333,12 @@ class StackedBarChart extends Component {
 
   render() {
     return(
-      <div id="container" style={{
+      <div id="containerb" style={{
         height: "75vh",
-        width: "50vw",
+        width: "45vw",
         display: "block",
-        background: 'gray',
-        borderRadius: '15px',
+        background: 'linear-gradient(to right, #FFFFFF, #eee)',
+        borderRadius: '0 15px 15px 0',
       }}>
       </div>
     );
