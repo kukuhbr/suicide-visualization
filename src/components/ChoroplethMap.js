@@ -9,7 +9,6 @@ class ChoroplethMap extends Component {
   numberWithComma(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
-
   componentDidMount() {
     let dataset = {};
     var countries = Datamap.prototype.worldTopo.objects.world.geometries;
@@ -110,14 +109,34 @@ class ChoroplethMap extends Component {
             }}>
             </div>
           </Grid>
+          
       
           <Grid item xs={3}>
-            <div>
-              <p>Global Suicide Rates</p>
-              <p>10.7 per 100,000 population </p>
-              <p>786047 death by suicide in 2016</p>
-              <p>Global Suicide Percetage </p>
-            </div>
+            <Grid item xs={12}>
+              <div>
+                <p class="title">Global Suicide Rates</p>
+                <p class="text"><span class="numbers">10.7</span> per 100,000 population </p>
+                <p class="text"><span class="numbers">786,047</span> death by suicide in 2016</p>
+              </div>
+              <br /> <br /> <br /> <br /> <br />
+            </Grid>
+            <Grid item xs={12}>
+              <span>>30</span>
+            </Grid>
+            <Grid item xs={12}>
+              <svg width="20" height="150">
+                <defs>
+                  <linearGradient id="grad2" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#8a2323" />
+                    <stop offset="100%" stop-color="#FFEFEF"  />
+                  </linearGradient>
+                </defs>
+                <rect x="0" y="0" width="20" height="150" fill="url(#grad2)"  />
+              </svg>
+            </Grid>
+            <Grid item xs={12}>
+              <span>0</span>
+            </Grid>
           </Grid>
       </Grid>
         

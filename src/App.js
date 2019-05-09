@@ -48,8 +48,6 @@ export default class extends Component{
           {value === 0 && <TabContainer><ChoroplethMap data={this.state.data} /></TabContainer>}
           {value === 1 && <TabContainer><IncomeMap data={this.state.income} selected={this.state.selected}/> </TabContainer>}
 
-
-
       </div>
     );
   }

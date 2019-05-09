@@ -59,8 +59,8 @@ class IncomeMap extends Component {
         },
         popupTemplate: function(geo, data) {
           let html = [
-            '<fieldset class="hover-container">',
-            '<legend>', geo.properties.name, '</legend>',
+            '<fieldset class="hover-container-alternative">',
+            '<legend class="legend-alternative">', geo.properties.name, '</legend>',
           ].join('');
 
           if (data) {
@@ -162,7 +162,7 @@ class IncomeMap extends Component {
             <Grid item xs={9}>
                 <div id="container" style={{
                     height: "75vh",
-                    width: "70vw",
+                    width: "50vw",
                     display: "block",
                     //background: 'linear-gradient(#02081a, #86838c)',
                     borderRadius: '15px',

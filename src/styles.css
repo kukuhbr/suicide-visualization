@@ -10,13 +10,41 @@
   font-family: 'Tahoma';
 }
 
+.hover-container-alternative {
+  background: #c5c200;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  border-width: 0;
+  -webkit-box-shadow: 0 1px 2px #626900;
+	-moz-box-shadow: 0 2px 1px #626900;
+  box-shadow: 0 2px 1px #626900;
+  font-family: 'Tahoma';
+}
+
+.title {
+  font-weight: 700;
+  font-size: 2rem;
+}
+
 .numbers {
   font-size: 1.5rem;
   font-weight: bold;
 }
 
+.text {
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
 legend {
   color: white;
   background: #820002;
+  font-weight: bold;
+}
+
+.legend-alternative{
+  color: white;
+  background: #7a9c00;
   font-weight: bold;
 }
