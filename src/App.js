@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import ChoroplethMap from './components/ChoroplethMap';
+import StackedBarChart from './components/StackedBarChart';
 import Header from './components/Layouts/Header';
 import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types';

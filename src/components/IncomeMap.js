@@ -3,6 +3,7 @@ import Datamap from 'datamaps/dist/datamaps.world.min.js';
 import * as d3 from 'd3';
 import Test from './Layouts/test';
 import Grid from '@material-ui/core/Grid';
+import StackedBarChart from './StackedBarChart';
 //import {event as d3Event} from 'd3-selection';
 //import {zoom as d3Zoom} from 'd3-zoom';
 
@@ -10,7 +11,7 @@ class IncomeMap extends Component {
 
     constructor(props) {
         super(props);
-        
+
         this.state = {
             selected: 'all',
         };
@@ -159,23 +160,23 @@ class IncomeMap extends Component {
     return (
     <div>
         <Grid container spacing={16}>
-            <Grid item xs={9}>
+            <Grid item xs={6}>
                 <div id="container" style={{
                     height: "75vh",
                     width: "50vw",
                     display: "block",
-                    //background: 'linear-gradient(#02081a, #86838c)',
+                    background: 'linear-gradient(to left, #FFFFFF, #eee)',
                     borderRadius: '15px',
                 }}>
                 </div>
             </Grid>
-            <Grid item xs={3}>
-                <Test selected={this.state.selected}/>
+            <Grid item xs={6}>
+                <StackedBarChart height='400' width='1000' selected={this.state.selected}/>
             </Grid>
         </Grid>
-        
+
     </div>
-      
+
     );
   }
 }

@@ -9,6 +9,7 @@ class ChoroplethMap extends Component {
   numberWithComma(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
+
   componentDidMount() {
     let dataset = {};
     var countries = Datamap.prototype.worldTopo.objects.world.geometries;
@@ -109,8 +110,8 @@ class ChoroplethMap extends Component {
             }}>
             </div>
           </Grid>
-          
-      
+
+
           <Grid item xs={3}>
             <Grid item xs={12}>
               <div>
@@ -139,7 +140,7 @@ class ChoroplethMap extends Component {
             </Grid>
           </Grid>
       </Grid>
-        
+
     </div>
     );
   }
