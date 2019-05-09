@@ -1,68 +1,41 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Suicide Rate Visualization (2016)
 
-## Available Scripts
+In 2016 WHO recorded 786,047 cases of suicide across the globe. Among these cases, suicide is most prevalent in teenager and adolescent.
+However, 
 
-In the project directory, you can run:
+---
+See the visualization http://178.128.209.157/
 
-### `npm start`
+## Requirement
+1. Node.js
+2. Yarn
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Installation
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+1. Git clone this repository
+2. yarn install
+3. yarn start
+4. Go to localhost:3000 in browser
+---
 
-### `npm test`
+## Libraries and Dependencies
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The project was bootstrapped by create-react-app.
+Furthermore we are thankful for the creation of these libraries:
+1. D3.js
+2. React.js
+3. Datamaps.js
 
-### `npm run build`
+## Conclusion
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Through the visualization we gain the following insights:
+1. In lower income countries suicide are mostly done by young people in productive age.
+2. Suicide in older people are more common in higher income countries than lower income countries.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+## Contributor
+[Kukuh Basuki Rahmat](https://github.com/kukuhbr) 13515025
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+[Verena Severina](https://github.com/verenaseverina) 13515047
 
-### `npm run eject`
+[Winarto](https://github.com/yowinarto) 13515061
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
