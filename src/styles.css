@@ -20,3 +20,17 @@ legend {
   background: #820002;
   font-weight: bold;
 }
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #aaa;
+}
+
+path.domain {
+  stroke:#aaa;
+}
+
+.y .tick line {
+  stroke: #aaa;
+}

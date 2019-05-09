@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import ChoroplethMap from './components/ChoroplethMap';
+import StackedBarChart from './components/StackedBarChart';
 import Header from './components/Layouts/Header';
 import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types';
@@ -44,7 +45,7 @@ export default class extends Component{
             <Tab style={{fontFamily: 'Comic Sans MS'}} label="Item Three" />
           </Tabs>
           {value === 0 && <TabContainer><ChoroplethMap data={this.state.data} /></TabContainer>}
-          {value === 1 && <TabContainer>Item Two</TabContainer>}
+          {value === 1 && <TabContainer><StackedBarChart height='400' width='1000' /></TabContainer>}
           {value === 2 && <TabContainer>Item Three</TabContainer>}
 
 

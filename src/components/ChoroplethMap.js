@@ -5,10 +5,6 @@ import * as d3 from 'd3';
 //import {zoom as d3Zoom} from 'd3-zoom';
 
 class ChoroplethMap extends Component {
-  numberWithComma(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  }
-
   componentDidMount() {
     let dataset = {};
     var countries = Datamap.prototype.worldTopo.objects.world.geometries;
